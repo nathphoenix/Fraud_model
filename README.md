@@ -80,6 +80,8 @@ Considering the small size of our dataset (1000 rows), oversampling is the ideal
   - Precision, Recall, F1-Score
   - ROC-AUC
 
+
+
 ### Model Accuracy interpretation
 ---
 
@@ -127,6 +129,54 @@ One-Class SVM achieves only 50.60% accuracy, with a ROC AUC of 0.5102—barely a
 Scoring 49.70% accuracy and a ROC AUC of 0.5117, Isolation Forest is **not effective for this task**. Its poor precision and recall for class 0 further indicate it is **better suited for anomaly detection**, not standard classification.
 
 ---
+
+### **Trade-offs Between Precision vs. Recall**
+
+Precision and recall are key classification metrics with inherent trade-offs:
+
+- **High Precision** (Low False Positives):  
+  - *Benefit*: Fewer incorrect positive predictions (e.g., in spam detection, fewer legitimate emails marked as spam).  
+  - *Cost*: More false negatives (actual positives missed).  
+
+- **High Recall** (Low False Negatives):  
+  - *Benefit*: Fewer missed true positives (e.g., in medical diagnosis, fewer sick patients incorrectly cleared).  
+  - *Cost*: More false positives (incorrectly flagged cases).  
+
+**Business Impact of False Positives (FP) vs. False Negatives (FN):**
+
+| **Scenario**       | **False Positives (FP)** Impact | **False Negatives (FN)** Impact |
+|--------------------|--------------------------------|--------------------------------|
+| **Fraud Detection** | Unnecessary customer friction (blocked transactions, complaints) | Financial losses (undetected fraud) |
+| **Medical Testing** | Unneeded treatments, patient stress | Missed diagnoses, worsening conditions |
+| **Spam Filtering**  | Legitimate emails lost (customer dissatisfaction) | More spam reaching users (poor UX) |
+| **Credit Scoring**  | Good applicants rejected (lost revenue) | High-risk loans approved (default risk) |
+
+### **Model-Specific Business Implications**
+
+1. **LightGBM (Best Overall)**  
+   - **High precision & recall** → Balanced risk of FP/FN.  
+   - Best for **general use** where both errors are costly (e.g., fraud detection).  
+
+2. **SVM (Optimized)**  
+   - **Perfect class 1 precision (0 FP)** but **lower recall (misses 18% of positives)**.  
+   - Ideal where **FPs are very costly** (e.g., wrongful fraud accusations).  
+
+3. **Logistic Regression**  
+   - **Lower recall (83%) for class 1** → Higher FN risk.  
+   - Best as a **baseline** or where interpretability > performance.  
+
+4. **Random Forest**  
+   - **Good balance but lower accuracy** → Moderate FP/FN trade-off.  
+   - Useful when **interpretability** is needed alongside decent performance.  
+
+5. **One-Class SVM / Isolation Forest**  
+   - **Near-random performance** → Unreliable for supervised tasks.  
+   - Only suitable for **unsupervised anomaly detection**.  
+
+### **Recommendation:**
+- **For high-stakes decisions (e.g., healthcare, fraud):** Prioritize **LightGBM/XGBoost** for best balance.  
+- **If false positives are unacceptable (e.g., legal compliance):** Use **SVM (Optimized)**.  
+- **If explainability matters:** **Random Forest/Logistic Regression** (but expect more FNs).  
 
 
 
