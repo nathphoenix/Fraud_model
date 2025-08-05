@@ -21,7 +21,6 @@ override.tf.json
 /storage/*.key
 /storage/logs/*
 /vendor
-.env
 .env.backup
 .phpunit.result.cache
 Homestead.json
