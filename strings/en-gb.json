@@ -1,0 +1,8 @@
+{
+  "fineractclientid_error": "Fineractclientid Error, fineractclientid parameter is missing",
+  "Authentication_error": "Authentication Failed, Permission Denied",
+  "http_token": "Token Credential is Missing",
+  "unknown_user_data": "User record does not exist, please check again",
+  "invalid_transaction_records": "User has no transaction records",
+  "fineractclientid": "Payload Error, fineractclientid parameter is missing"
+}

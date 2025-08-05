@@ -1,0 +1,38 @@
+version: '3.1'
+services:
+  fraud_app:
+    image: nathphoenix/fraud_app:latest
+    build: .
+    container_name: fraud_app
+    env_file:
+      - .env
+    restart: always
+    volumes:
+      - fraud_app:/home/node/app
+    environment:
+      - FLASK_APP=app.py
+    # CMD flask run -h 0.0.0.0 -p 4000
+    command: flask run --host=0.0.0.0
+    
+    networks:
+      - app-network
+    
+
+  nginx:
+    image: nathphoenix/nginx:latest
+    build: ./nginx
+    container_name: nginx
+    depends_on:
+      - fraud_app
+    networks:
+      - app-network
+    ports:
+      - 80:80
+
+volumes:
+  fraud_app:
+    driver: local
+  
+
+networks:
+  app-network:

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Indy Chatbot - Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  
+  
+  <link href="{{ url_for('static',filename='images/brandlogo.jpg') }}" rel="shortcut icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  
+  <script>
+
+      $(window).load(function()
+  {
+      $('#myModal').modal('show');
+  });
+  </script>
+
+  
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      
+      <a class="navbar-brand" href="{{ url_for('home') }}"><img src="{{ url_for('static',filename='images/brandlogo.jpg') }}" style="margin-top:-10px; z-index:5; height:50px;"></a>
+      
+      <a href="index.html" class="logo"><img src="assets/img/brandlogo.jpg" alt="" class="img-fluid"></a>
+
+      <nav id="navbar" class="navbar">
+        
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto " href="#portfolio">Fraud Prediction</a></li>
+          <li><a class="nav-link scrollto" href="#team">Team</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+      <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+        <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+        <div class="carousel-inner" role="listbox">
+
+          <!-- Slide 1 -->
+          <div class="carousel-item active" style="background-image: url(assets/img/slide/slide3.jpg);">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2 class="animate__animated animate__fadeInDown">Save Your Customer</h2>
+                <p class="animate__animated animate__fadeInUp">Keeping tracks of your customer activities and engagement will help them from churning</p>
+                <div>
+                  <a href="#portfolio" class="btn-get-started animate__animated animate__fadeInUp scrollto">Detect Fraud here!</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="carousel-item" style="background-image: url(assets/img/slide/slide2.jpg);">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2 class="animate__animated animate__fadeInDown">Customer Risk Evaluation</h2>
+                <p class="animate__animated animate__fadeInUp">Understanding customer risk by evaluating them into different risk categories is necessary for the business</p>
+                <div>
+                  <a href="#portfolio" class="btn-get-started animate__animated animate__fadeInUp scrollto">Detect Fraud here!</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="carousel-item" style="background-image: url(assets/img/slide/slide1.jpg);">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2 class="animate__animated animate__fadeInDown">Improve Customer Satisfaction</h2>
+                <p class="animate__animated animate__fadeInUp">Having a clear cut of degrees of Satisfaction also gives a sense of relief for the business</p>
+                <div>
+                  <a href="#portfolio" class="btn-get-started animate__animated animate__fadeInUp scrollto">Detect Fraud here!</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+        </a>
+
+        <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+          <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+        </a>
+
+      </div>
+    </div>
+  </section><!-- End Hero -->
+
+<!-- Button to Open the Modal -->
+
+<!-- The Modal -->
+{% if response %}
+<div class="modal" id="myModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header" style='background-color: #4F8008; opacity:0.8; color:white'>
+        <h4 class="modal-title">Fraud Prediction Result</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div> 
+          {% if missing or fineract_error %}
+            <div class="alert alert-warning alert-dismissible fade in">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong><p>{{missing|safe}}</p></strong>
+            </div>
+          {% endif %}
+											{% if response %}
+											<div class="table-responsive">
+            
+                        <p><b>Prediction : </b>{{ response['prediction'] }}</p>
+                        <p><b>Probability : </b>{{ response['probability'] }}</p>
+                        <p><b>Explanation : </b>{{ response['explanation'] }}</p>
+                        
+                  
+                      </div>
+											{% else %}
+												<div></div>
+											{%endif%}
+          
+      </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endif %}
+<!--MODAL LOADING-->
+
+  <main id="main">
+    <!-- ======= Portfolio Section ======= -->
+    
+    <section id="portfolio" style="background-color: #F1F1F1;">
+      <div class="section-title">
+        <h2>Get Fraud Prediction</h2>
+      </div>
+
+      <div class='container'>
+      <div class='row'>     
+            <div class = 'col-md-3'></div>
+            <div class = 'col-md-6'>
+            <div class="form">
+              <form action="/fraud_predict" method="get" role="form">
+                
+                
+                <div class="form-group mt-3">
+                  <div class="form-group mt-3">
+                    <label for="transaction_amount">Transaction Amount</label><br>
+                    <input type="text" class="form-control" id="transaction_amount" name="transaction_amount"
+                          placeholder="Enter Transaction Amount" value="20.54490849240048" required>
+                  </div>
+
+                  <div class="form-group mt-3">
+                    <label for="transaction_type">Transaction Type</label><br>
+                    <input type="text" class="form-control" id="transaction_type" name="transaction_type"
+                          placeholder="Enter Transaction Type" value="ATM" required>
+                  </div>
+
+                  <div class="form-group mt-3">
+                    <label for="device_type">Device Type</label><br>
+                    <input type="text" class="form-control" id="device_type" name="device_type"
+                          placeholder="Enter Device Type" value="Mobile" required>
+                  </div>
+
+                  <div class="form-group mt-3">
+                    <label for="location">Location</label><br>
+                    <input type="text" class="form-control" id="location" name="location"
+                          placeholder="Enter Location" value="Abuja" required>
+                  </div>
+
+                  <div class="form-group mt-3">
+                    <label for="time_of_day">Time Of Day</label><br>
+                    <input type="text" class="form-control" id="time_of_day" name="time_of_day"
+                          placeholder="Enter Time Of Day" value="Morning" required>
+                  </div>
+
+                  <div class="form-group mt-3">
+                    <label for="day_of_week">Day Of Week</label><br>
+                    <input type="text" class="form-control" id="day_of_week" name="day_of_week"
+                          placeholder="Enter Day Of Week" value="Tue" required>
+                  </div>
+
+                  <div class="form-group mt-3">
+                    <label for="is_foreign_transaction">Is Foreign Transaction</label><br>
+                    <input type="text" class="form-control" id="is_foreign_transaction" name="is_foreign_transaction"
+                          placeholder="Enter Is Foreign Transaction" value="1" required>
+                  </div>
+
+                  <div class="form-group mt-3">
+                    <label for="is_high_risk_country">Is High Risk Country</label><br>
+                    <input type="text" class="form-control" id="is_high_risk_country" name="is_high_risk_country"
+                          placeholder="Enter Is High Risk Country" value="0" required>
+                  </div>
+
+                  <div class="form-group mt-3">
+                    <label for="previous_fraud_flag">Previous Fraud Flag</label><br>
+                    <input type="text" class="form-control" id="previous_fraud_flag" name="previous_fraud_flag"
+                          placeholder="Enter Previous Fraud Flag" value="0" required>
+                  </div>
+
+                  <div class="form-group mt-3">
+                    <label for="label_code">Label Code</label><br>
+                    <input type="text" class="form-control" id="label_code" name="label_code"
+                          placeholder="Enter Label Code" value="1" required>
+                  </div>
+
+                  <div class="form-group mt-3">
+                    <label for="transaction_time">Transaction Time</label><br>
+                    <input type="text" class="form-control" id="transaction_time" name="transaction_time"
+                          placeholder="Enter Transaction Time" value="2024-01-29T14:00:00" required>
+                  </div>
+
+                  <div class="form-group mt-3">
+                    <label for="risk_score">Risk Score</label><br>
+                    <input type="text" class="form-control" id="risk_score" name="risk_score"
+                          placeholder="Enter Risk Score" value="0.3629753030567228" required>
+                  </div>
+
+                <button type="submit" class="btn btn-success center-align"  style="margin-top: 20px; margin-left: 200px">Predict</button>
+              </form>
+            </div>
+          </div>
+          
+          
+        </div>
+       </div>
+      </div>
+    </section><!-- End Contact Section -->
+   
+
+
+
+    
+
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-info">
+              <h3>Fraud</h3>
+              <p>
+                76A Frank Avenue St,<br>
+                Victoria Island 106104, Lagos <br><br>
+                <strong>Phone:</strong> +2347082654814<br>
+                <strong>Email:</strong> support@inter.ng<br>
+              </p>
+              <div class="social-links mt-3">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Digital Banking Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Bills Payment</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Salary Payments</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Business Registration</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Business Account</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Our Newsletter</h4>
+            <p>You can sign up for our weekly letters in other to receive business information that can impact your business</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>inter</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        Designed by <a href="/">inter Data Team</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+ 
+  
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

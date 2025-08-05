@@ -1,0 +1,25 @@
+.git
+.dockerignore
+notes
+debugger
+.vscode
+req.txt
+analytics/models/
+debugger/
+__pycache__/
+.pytest_cache/
+db.sqlite3
+.ipynb_checkpoints
+*.log
+celerybeat-schedule.bak
+celerybeat-schedule.dat
+celerybeat-schedule.dir
+# Environments
+
+.venv
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+

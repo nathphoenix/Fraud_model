@@ -1,0 +1,15 @@
+import os
+
+
+
+SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URI")
+
+SQLALCHEMY_TRACK_MODIFICATIONS = False
+PROPAGATE_EXCEPTIONS = True 
+SECRET_KEY= os.environ.get("APP_SECRET_KEY")  
+
+
+## Celery.
+
+
+

@@ -1,0 +1,8 @@
+{
+  "unknown_user_data": "User record does not exist, please check again",
+  "invalid_transaction_records": "User has no transaction records",
+  "gender_error": "Payload Error, gender parameter is missing",
+  "nuban_error": "Payload Error, nuban parameter is missing",
+  "generation_error":"Payload Error, generation parameter is missing",
+  "loyalty_error":"Payload Error, loyalty_level(flywheel value) parameter is missing"
+}

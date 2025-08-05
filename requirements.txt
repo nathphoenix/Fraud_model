@@ -1,0 +1,26 @@
+Flask==2.0.0
+Flask-Cors==6.0.0
+flask-sieve==2.0.1
+Flask-RESTful==0.3.10
+importlib-metadata==4.11.3
+itsdangerous==2.0.1
+Jinja2==3.1.6
+SQLAlchemy==1.4.39
+MarkupSafe==2.1.1
+requests==2.32.0
+Werkzeug==2.0.0
+scikit-learn==1.2.1
+python-dotenv
+path==16.3.0
+pytest==7.1.2
+joblib==1.1.1
+pandas==1.5.3
+regex==2024.5.15
+numpy==1.26.4
+gunicorn==22.0.0
+schedule==1.2.2
+# python-dotenv==0.10.3  original, works with docker on this system
+python-dotenv
+lightgbm==4.6.0
+imbalanced-learn==0.10.1
+marshmallow==3.26.1
