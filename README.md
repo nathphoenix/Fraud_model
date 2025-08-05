@@ -164,7 +164,7 @@ Scoring 49.70% accuracy and a ROC AUC of 0.5117, Isolation Forest is **not effec
 - ✅ Trained and validated model
 - ✅ Real-time fraud detection API (flask)
 - ✅ Dockerfile for containerized deployment
-- ✅ Optional Streamlit dashboard
+- ✅ Optional Streamlit dashboard replace with jinja2 implementation
 - ✅ Complete project documentation
 
 ---
@@ -178,14 +178,6 @@ Scoring 49.70% accuracy and a ROC AUC of 0.5117, Isolation Forest is **not effec
 | **AUC-ROC** | ≥ 0.95 |
 | **Inference Time** | < 500ms |
 | **Explainability** | SHAP or feature importance visualization |
-
----
-
-## 🚀 Future Work
-- Integrate active learning for continuous improvement.
-- Real-time streaming with Kafka.
-- Anomaly detection with unsupervised models.
-- Multi-model voting system for higher reliability.
 
 ---
 
