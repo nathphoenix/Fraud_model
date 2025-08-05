@@ -181,13 +181,15 @@ Scoring 49.70% accuracy and a ROC AUC of 0.5117, Isolation Forest is **not effec
 
 ---
 
+---
+
 ## 📁 Folder Structure (Suggested)
 
 # 🚀 Getting Started (Local Development)
 
 ### 1. Clone the Repository
 
-
+```bash
 git clone https://github.com/nathphoenix/Fraud_model
 cd fraud_model
 
