@@ -4,11 +4,6 @@ from api.app import app
 from dotenv import load_dotenv
 import logging
 
-
-
- 
-
-
 dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
 if os.path.exists(dotenv_path):
     load_dotenv(dotenv_path)
@@ -25,7 +20,7 @@ if __name__ == "__main__":
     logFormatStr = '[%(asctime)s] p%(process)s {%(pathname)s:%(lineno)d} %(levelname)s - %(message)s'
     logging.basicConfig(format = logFormatStr, filename = logger_folder, level=logging.DEBUG)
     formatter = logging.Formatter(logFormatStr,'%m-%d %H:%M:%S')
-    fileHandler = logging.FileHandler("summary.log")
+    fileHandler = logging.FileHandler(logger_folder)
     fileHandler.setLevel(logging.DEBUG)
     fileHandler.setFormatter(formatter)
     streamHandler = logging.StreamHandler()
