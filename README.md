@@ -53,7 +53,7 @@ The dataset consists of transaction records with the following features:
 - Normalize continuous features like `transaction_amount` and `risk_score`.
 - Feature engineering: convert `time_of_day`, `day_of_week`, and `hour` into model-usable formats.
 
-### Imbalance dataset hadnling
+### Imbalance dataset handling
 
 - We have an imbalanced dataset with only 1000 rows. To address this imbalance, we can use either undersampling or oversampling techniques.
 Undersampling reduces the number of samples from the majority class. While it helps balance the data, it also removes potentially valuable information, which can be harmful when working with a small dataset.
@@ -135,7 +135,7 @@ Scoring 49.70% accuracy and a ROC AUC of 0.5117, Isolation Forest is **not effec
 - Detect repetitive fraudulent behavior during specific time windows.
 
 ### 5. Model Deployment
-- Create a REST API using **FastAPI** to serve the model.
+- Create a REST API using **flask** to serve the model.
 - Accept transaction data in JSON and return:
   - `fraud_prediction` (0 or 1)
   - `confidence_score`
@@ -162,7 +162,7 @@ Scoring 49.70% accuracy and a ROC AUC of 0.5117, Isolation Forest is **not effec
 
 - ✅ Preprocessed dataset
 - ✅ Trained and validated model
-- ✅ Real-time fraud detection API (FastAPI)
+- ✅ Real-time fraud detection API (flask)
 - ✅ Dockerfile for containerized deployment
 - ✅ Optional Streamlit dashboard
 - ✅ Complete project documentation
@@ -195,9 +195,9 @@ Scoring 49.70% accuracy and a ROC AUC of 0.5117, Isolation Forest is **not effec
 
 ### 1. Clone the Repository
 
-```bash
-git clone https://github.com/yourusername/fraud-detection.git
-cd fraud-detection
+
+git clone https://github.com/nathphoenix/Fraud_model
+cd fraud_model
 
 Create a Virtual Environment
 python -m venv venv or virtualenv fraud-env --python=python
