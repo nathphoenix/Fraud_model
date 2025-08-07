@@ -189,8 +189,6 @@ In fraud detection, **precision** and **recall** have critical trade-offs:
   - Use when catching fraud is critical, even at the cost of some false alarms.  
 - **Avoid:** **One-Class SVM & Isolation Forest**—they fail at supervised fraud detection.  
 
-Would you like a deeper breakdown on how to adjust decision thresholds based on business costs?
-
 
 
 ### 4. Temporal Pattern Analysis
